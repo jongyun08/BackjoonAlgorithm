@@ -6,11 +6,10 @@ int main()
 	short A;
 	short B;
 
-	while (true)
+	while (cin >> A >> B)
 	{
-		cin >> A >> B;
-		if (cin.eof())
-			break;
+		
+		
 		cout << A + B << endl;
 
 	}
