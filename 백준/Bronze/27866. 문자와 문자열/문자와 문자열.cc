@@ -1,3 +1,4 @@
+
 #include <iostream>
 using namespace std;
 
@@ -7,14 +8,7 @@ int main()
 	int i;
 	cin >> str;
 	cin >> i;
-	for (int x = 0; x < 1000; ++x)
-	{
-		if (str[x] == str[i - 1])
-		{
-			cout << str[x];
-			break;
-		}
-	}
+	cout << str[i - 1];
 	
 	return 0;
 }
