@@ -3,38 +3,25 @@ using namespace std;
 
 int main()
 {
-	int T;
+	int T, Q = 0, D = 0, N = 0, P = 0;
 	cin >> T;
-	int C;
+	int* C = new int[T];
 	
-	while (T--)
+	for (int i = 0; i < T; ++i)
 	{
-		int Q = 0, D = 0, N = 0, P = 0;
-		cin >> C;
-		while (C)
-		{
-			if (C >= 25)
-			{
-				Q++;
-				C -= 25;
-			}
-			else if (C >= 10)
-			{
-				D++;
-				C -= 10;
-			}
-			else if (C >= 5)
-			{
-				N++;
-				C -= 5;
-			}
-			else
-			{
-				P++;
-				C -= 1;
-			}
-		}
+		cin >> C[i];
+	}
+	for (int i = 0; i < T; ++i)
+	{
+		Q = C[i] / 25;
+		C[i] = C[i] % 25;
+		D = C[i] / 10;
+		C[i] = C[i] % 10;
+		N = C[i] / 5;
+		C[i] = C[i] % 5;
+		P = C[i];
 		cout << Q << " " << D << " " << N << " " << P << endl;
 	}
+	delete[] C;
   	return 0;
 }
