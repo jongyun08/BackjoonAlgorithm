@@ -1,52 +1,40 @@
 #include <iostream>
-#include <algorithm>
 using namespace std;
 
 int main()
 {
 	int T;
 	cin >> T;
-	int C[10000] = { 0 };
-	int Quarter = 0;
-	int Dime = 0;
-	int Nickel = 0;
-	int Penny = 0;
-	for (int i = 0; i < T; ++i)
+	int C;
+	
+	while (T--)
 	{
-		cin >> C[i];
-	}
-	for (int i = 0; i < T; ++i)
-	{
-		if (C[i] >= 25)
+		int Q = 0, D = 0, N = 0, P = 0;
+		cin >> C;
+		while (C)
 		{
-			Quarter = C[i] / 25;
-			C[i] = C[i] % 25;
-			Dime = C[i] / 10;
-			C[i] = C[i] % 10;
-			Nickel = C[i] / 5;
-			C[i] = C[i] % 5;
-			Penny = C[i] / 1;
+			if (C >= 25)
+			{
+				Q++;
+				C -= 25;
+			}
+			else if (C >= 10)
+			{
+				D++;
+				C -= 10;
+			}
+			else if (C >= 5)
+			{
+				N++;
+				C -= 5;
+			}
+			else
+			{
+				P++;
+				C -= 1;
+			}
 		}
-
-		else if (C[i] < 25)
-		{
-			Dime = C[i] / 10;
-			C[i] = C[i] % 10;
-			Nickel = C[i] / 5;
-			C[i] = C[i] % 5;
-			Penny = C[i] / 1;
-		}
-		else if (C[i] < 10)
-		{
-			Nickel = C[i] / 5;
-			C[i] = C[i] % 5;
-			Penny = C[i] / 1;
-		}
-		else if (C[i] < 5)
-		{
-			Penny = C[i] / 1;
-		}
-		cout << Quarter << " " << Dime << " " << Nickel << " " << Penny << endl;
+		cout << Q << " " << D << " " << N << " " << P << endl;
 	}
   	return 0;
 }
